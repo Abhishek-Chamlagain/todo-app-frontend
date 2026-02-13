@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo App - Modern Task Manager</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-container">
+    <div class="glass-card">
+      <header class="app-header">
+        <div class="header-content">
+          <h1 class="app-title">
+            <span class="icon">✓</span>
+            Todo App
+          </h1>
+          <p class="app-subtitle">Organize your day, one task at a time</p>
+        </div>
+        <div class="stats">
+          <div class="stat-item">
+            <span class="stat-number" id="total-count">0</span>
+            <span class="stat-label">Total</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" id="pending-count">0</span>
+            <span class="stat-label">Pending</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" id="completed-count">0</span>
+            <span class="stat-label">Done</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="add-todo-section">
+        <form id="todo-form" class="todo-form">
+          <div class="form-group">
+            <input 
+              type="text" 
+              id="todo-title" 
+              class="input-field" 
+              placeholder="What needs to be done?"
+              required
+            >
+          </div>
+          <div class="form-group">
+            <input 
+              type="text" 
+              id="todo-description" 
+              class="input-field" 
+              placeholder="Add a description (optional)"
+            >
+          </div>
+          <button type="submit" class="btn btn-primary">
+            <span class="btn-icon">+</span>
+            Add Todo
+          </button>
+        </form>
+      </div>
+
+      <div class="filter-tabs">
+        <button class="filter-btn active" data-filter="all">All Tasks</button>
+        <button class="filter-btn" data-filter="pending">Pending</button>
+        <button class="filter-btn" data-filter="completed">Completed</button>
+      </div>
+
+      <div class="todos-container">
+        <div id="loading" class="loading hidden">
+          <div class="spinner"></div>
+          <p>Loading your todos...</p>
+        </div>
+        
+        <div id="error-message" class="error-message hidden"></div>
+        
+        <div id="empty-state" class="empty-state hidden">
+          <div class="empty-icon">📝</div>
+          <h3>No tasks yet</h3>
+          <p>Add your first todo to get started!</p>
+        </div>
+
+        <ul id="todo-list" class="todo-list"></ul>
+      </div>
+    </div>
+  </div>
+
+  <div id="edit-modal" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Edit Todo</h2>
+        <button class="close-btn" id="close-modal">&times;</button>
+      </div>
+      <form id="edit-form">
+        <div class="form-group">
+          <label for="edit-title">Title</label>
+          <input type="text" id="edit-title" class="input-field" required>
+        </div>
+        <div class="form-group">
+          <label for="edit-description">Description</label>
+          <input type="text" id="edit-description" class="input-field">
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" id="cancel-edit">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
